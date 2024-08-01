@@ -1,22 +1,14 @@
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 public class Retirar extends JFrame implements ActionListener {
+    private final JButton botonUno, botonDos, botonTres, botonCuatro, botonCinco, botonSeis, cancelar;
+    private final JLabel labelTitulo, labelTituloDos, saldoUsuario, labelUno, labelDos, labelTres, labelCuatro, labelCinco, labelSeis;
 
-    private JButton botonUno, botonDos, botonTres, botonCuatro, botonCinco, botonSeis, cancelar;
-    private JLabel labelTitulo, labelTituloDos, saldoUsuario, labelUno, labelDos, labelTres, labelCuatro, labelCinco, labelSeis;
-
-    int dinero = 0;
-    public static int dineroARetirar = 0;
-    public static int variableDepositar = 0;
-    public static int dineroRetiro = 0;
-
-    public Retirar() {
-        Datos objeto = new Datos();
-        dinero = objeto.dineroUsuario;
-        
+    protected static int dineroARetirar;
+    
+    protected Retirar() {
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("|| Retirar ||");
@@ -34,7 +26,7 @@ public class Retirar extends JFrame implements ActionListener {
         labelTituloDos.setForeground(new Color(255, 255, 255));
         add(labelTituloDos);
 
-        saldoUsuario = new JLabel("Tu Saldo: $" + dinero);
+        saldoUsuario = new JLabel("Tu Saldo: $" + DatosUsuario.getDineroUsuario());
         saldoUsuario.setBounds(90, 150, 170, 30);
         saldoUsuario.setFont(new Font("Times New Roman", 1, 15));
         saldoUsuario.setForeground(new Color(255, 255, 255));
@@ -125,115 +117,32 @@ public class Retirar extends JFrame implements ActionListener {
         cancelar.addActionListener(this);
         add(cancelar);
     }
-
+    
+    @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == botonUno) {
             dineroARetirar = 20000;
-            
             JOptionPane.showMessageDialog(null, "Vas a realizar un retiro de $20.000 pesos");
-            
-            if (dineroARetirar <= dinero) {
-                ConfirmarTransaccion ventanaConfirmarContraseña = new ConfirmarTransaccion();
-                ventanaConfirmarContraseña.setBounds(0, 0, 250, 300);
-                ventanaConfirmarContraseña.setResizable(false);
-                ventanaConfirmarContraseña.setLocationRelativeTo(null);
-                ventanaConfirmarContraseña.setVisible(true);
-                
-                this.setVisible(false);
-                
-            } else {
-                JOptionPane.showMessageDialog(null, "Lo siento no tienes saldo suficiente");
-            }
             
         } else if (e.getSource() == botonDos) {
             dineroARetirar = 50000;
-            
             JOptionPane.showMessageDialog(null, "Vas a realizar un retiro de $50.000 pesos");
-            
-            if (dineroARetirar > dinero) {
-                JOptionPane.showMessageDialog(null, "Lo siento no tienes saldo suficiente");
-                
-            } else {
-                ConfirmarTransaccion ventanaConfirmarContraseña = new ConfirmarTransaccion();
-                ventanaConfirmarContraseña.setBounds(0, 0, 250, 300);
-                ventanaConfirmarContraseña.setResizable(false);
-                ventanaConfirmarContraseña.setLocationRelativeTo(null);
-                ventanaConfirmarContraseña.setVisible(true);
-                
-                this.setVisible(false);
-            }
 
         } else if (e.getSource() == botonTres) {
             dineroARetirar = 100000;
-            
             JOptionPane.showMessageDialog(null, "Vas a realizar un retiro de $100.000 pesos");
-            
-            if (dineroARetirar > dinero) {
-                JOptionPane.showMessageDialog(null, "Lo siento no tienes saldo suficiente");
-                
-            } else {
-                ConfirmarTransaccion ventanaConfirmarContraseña = new ConfirmarTransaccion();
-                ventanaConfirmarContraseña.setBounds(0, 0, 250, 300);
-                ventanaConfirmarContraseña.setResizable(false);
-                ventanaConfirmarContraseña.setLocationRelativeTo(null);
-                ventanaConfirmarContraseña.setVisible(true);
-                
-                this.setVisible(false);
-            }
 
         } else if (e.getSource() == botonCuatro) {
             dineroARetirar = 500000;
-            
             JOptionPane.showMessageDialog(null, "Vas a realizar un retiro de $500.000 pesos");
-            
-            if (dineroARetirar > dinero) {
-                JOptionPane.showMessageDialog(null, "Lo siento no tienes saldo suficiente");
-                
-            } else {
-                ConfirmarTransaccion ventanaConfirmarContraseña = new ConfirmarTransaccion();
-                ventanaConfirmarContraseña.setBounds(0, 0, 250, 300);
-                ventanaConfirmarContraseña.setResizable(false);
-                ventanaConfirmarContraseña.setLocationRelativeTo(null);
-                ventanaConfirmarContraseña.setVisible(true);
-                
-                this.setVisible(false);
-            }
 
         } else if (e.getSource() == botonCinco) {
             dineroARetirar = 1000000;
-            
             JOptionPane.showMessageDialog(null, "Vas a realizar un retiro de $1'000.000 pesos");
-            
-            if (dineroARetirar > dinero) {
-                JOptionPane.showMessageDialog(null, "Lo siento no tienes saldo suficiente");
-                
-            } else {
-                ConfirmarTransaccion ventanaConfirmarContraseña = new ConfirmarTransaccion();
-                ventanaConfirmarContraseña.setBounds(0, 0, 250, 300);
-                ventanaConfirmarContraseña.setResizable(false);
-                ventanaConfirmarContraseña.setLocationRelativeTo(null);
-                ventanaConfirmarContraseña.setVisible(true);
-                
-                this.setVisible(false);
-            }
 
         } else if (e.getSource() == botonSeis) {
             dineroARetirar = 10000000;
-            
             JOptionPane.showMessageDialog(null, "Vas a realizar un retiro de $10'000.000 pesos");
-            
-            if (dineroARetirar > dinero) {
-                JOptionPane.showMessageDialog(null, "Lo siento no tienes saldo suficiente");
-                
-            } else {
-                ConfirmarTransaccion ventanaConfirmarContraseña = new ConfirmarTransaccion();
-                ventanaConfirmarContraseña.setBounds(0, 0, 250, 300);
-                ventanaConfirmarContraseña.setResizable(false);
-                ventanaConfirmarContraseña.setLocationRelativeTo(null);
-                ventanaConfirmarContraseña.setVisible(true);
-                
-                this.setVisible(false);
-            }
 
         } else if (e.getSource() == cancelar) {
             Operaciones ventanaOperaciones = new Operaciones();
@@ -244,9 +153,22 @@ public class Retirar extends JFrame implements ActionListener {
             
             this.setVisible(false);
         }
+            
+        if (dineroARetirar > DatosUsuario.getDineroUsuario()) {
+                JOptionPane.showMessageDialog(null, "Lo siento no tienes saldo suficiente");
+                
+        } else {
+            ConfirmarTransaccion ventanaConfirmarContraseña = new ConfirmarTransaccion();
+            ventanaConfirmarContraseña.setBounds(0, 0, 250, 300);
+            ventanaConfirmarContraseña.setResizable(false);
+            ventanaConfirmarContraseña.setLocationRelativeTo(null);
+            ventanaConfirmarContraseña.setVisible(true);
+
+            this.setVisible(false);
+        }
     }
 
-    public static void main(String[] args) {
+    protected static void interfazRetirarDinero() {
         Retirar ventanaRetirar = new Retirar();
         ventanaRetirar.setBounds(0, 0, 350, 500);
         ventanaRetirar.setResizable(false);

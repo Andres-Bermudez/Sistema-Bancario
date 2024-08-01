@@ -1,26 +1,18 @@
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 public class Operaciones extends JFrame implements ActionListener {
-    private JLabel saludoBienvenida;
-    private JButton retirar, depositar, consultarSaldo, salir;
+    private final JLabel saludoBienvenida;
+    private final JButton retirar, depositar, consultarSaldo, salir;
     
-    int dinero = 0;
-    String nombre = "";
-    
-    public Operaciones() {
-        
+    protected Operaciones() {
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("|| Operaciones ||");
         getContentPane().setBackground(new Color(60, 20, 40));
         
-        Datos objeto = new Datos();
-        nombre = objeto.nombreUsuario;
-        
-        saludoBienvenida = new JLabel("Bienvenido " + nombre);
+        saludoBienvenida = new JLabel("Bienvenido " + DatosUsuario.getNombreUsuario());
         saludoBienvenida.setBounds(25, 80, 300, 30);
         saludoBienvenida.setFont(new Font("Times New Roman", 1, 30));
         saludoBienvenida.setForeground(new Color(255, 255, 255));
@@ -55,13 +47,10 @@ public class Operaciones extends JFrame implements ActionListener {
         add(salir); 
     }
     
+    @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == retirar) {
-            
-            Datos objeto = new Datos();
-            dinero = objeto.dineroUsuario;
-            
-            if (dinero == 0) {
+            if (DatosUsuario.getDineroUsuario() == 0) {
                 JOptionPane.showMessageDialog(null, "Parece que no tienes dinero disponible :(");
                 
             } else { 
@@ -85,17 +74,14 @@ public class Operaciones extends JFrame implements ActionListener {
             
         } else if (e.getSource() == consultarSaldo) {
             
-            Datos objetoDos = new Datos();
-            int dineroDisponible = objetoDos.dineroUsuario;
-            
-            JOptionPane.showMessageDialog(null, "Saldo Disponible: $" + dineroDisponible);
+            JOptionPane.showMessageDialog(null, "Saldo Disponible: $" + DatosUsuario.getDineroUsuario());
             
         } else if (e.getSource() == salir) {
             System.exit(0); 
         }
     }
     
-    public static void main (String[] args) {
+    protected static void interfazOperaciones() {
         Operaciones ventanaOperaciones = new Operaciones();
         ventanaOperaciones.setBounds(0, 0, 350, 500);
         ventanaOperaciones.setResizable(false);

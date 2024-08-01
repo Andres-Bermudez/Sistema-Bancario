@@ -1,22 +1,13 @@
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Registrarse extends JFrame implements ActionListener {
-    private JLabel tituloRegistrarse, tituloNombreUsuario, tituloContraseña, tituloConfirmarContraseña;
-    private JTextField crearNombreUsuario, crearContraseña, confirmarContraseña;
-    private JButton botonCrearUsuario, volver;
+public class RegistroUsuario extends JFrame implements ActionListener {
+    private final JLabel tituloRegistrarse, tituloNombreUsuario, tituloContraseña, tituloConfirmarContraseña;
+    private final JTextField creacionNombreUsuario, creacionContraseñaUsuario, confirmacionContraseña;
+    private final JButton botonCrearUsuario, volver;
     
-    public static String nombreUsuarioCreado = "";
-    public static String contraseñaCreada = "";
-    public static String confirmarContraseñaCreada = "";
-    public static int dineroUsuario = 0;
-    
-    private int dineroDepositado;
-    
-    public Registrarse() {
-        
+    protected RegistroUsuario() {
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("|| Registrarse ||");
@@ -41,9 +32,9 @@ public class Registrarse extends JFrame implements ActionListener {
         tituloNombreUsuario.setForeground(new Color(255, 255, 255));
         add(tituloNombreUsuario);
         
-        crearNombreUsuario = new JTextField();
-        crearNombreUsuario.setBounds(75, 170, 200, 30);
-        add(crearNombreUsuario);
+        creacionNombreUsuario = new JTextField();
+        creacionNombreUsuario.setBounds(75, 170, 200, 30);
+        add(creacionNombreUsuario);
         
         tituloContraseña = new JLabel("Nueva contraseña:");
         tituloContraseña.setBounds(75, 220, 150, 30);
@@ -51,9 +42,9 @@ public class Registrarse extends JFrame implements ActionListener {
         tituloContraseña.setForeground(new Color(255, 255, 255));
         add(tituloContraseña);
         
-        crearContraseña = new JTextField();
-        crearContraseña.setBounds(75, 250, 200, 30);
-        add(crearContraseña);
+        creacionContraseñaUsuario = new JTextField();
+        creacionContraseñaUsuario.setBounds(75, 250, 200, 30);
+        add(creacionContraseñaUsuario);
         
         tituloConfirmarContraseña = new JLabel("Confirmar contraseña:");
         tituloConfirmarContraseña.setBounds(75, 300, 150, 30);
@@ -61,9 +52,9 @@ public class Registrarse extends JFrame implements ActionListener {
         tituloConfirmarContraseña.setForeground(new Color(255, 255, 255));
         add(tituloConfirmarContraseña);
         
-        confirmarContraseña = new JTextField();
-        confirmarContraseña.setBounds(75, 330, 200, 30);
-        add(confirmarContraseña);
+        confirmacionContraseña = new JTextField();
+        confirmacionContraseña.setBounds(75, 330, 200, 30);
+        add(confirmacionContraseña);
         
         botonCrearUsuario = new JButton("Crear Usuario");
         botonCrearUsuario.setBounds(115, 400, 120, 30);
@@ -73,28 +64,21 @@ public class Registrarse extends JFrame implements ActionListener {
         botonCrearUsuario.addActionListener(this);
     }
     
+    @Override
     public void actionPerformed(ActionEvent e) {
+        String confirmarContraseñaCreada = confirmacionContraseña.getText();
+        
         if (e.getSource() == botonCrearUsuario) {
-            nombreUsuarioCreado = crearNombreUsuario.getText();
-            contraseñaCreada = crearContraseña.getText();
-            confirmarContraseñaCreada = confirmarContraseña.getText();
             
-            // Con esto verificamos que la contraseña sea minimo de 8 caracteres
-            // Se complementa con lo que esta en la linea 91
-            int contador = 0;
-            
-            for (int i = 0; i < contraseñaCreada.length(); i++) {
-                contador += 1;
-            }
-            
-            if (nombreUsuarioCreado.equals("") || contraseñaCreada.equals("") || confirmarContraseñaCreada.equals("")) {
+            if (creacionNombreUsuario.getText().isEmpty() || creacionContraseñaUsuario.getText().isEmpty() || confirmarContraseñaCreada.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Recuerda llenar todos los campos");
                 
-            } else if (contador < 8) {
+            } else if (creacionContraseñaUsuario.getText().trim().length() < 8) {
                 JOptionPane.showMessageDialog(null, "Tu contraseña debe ser minimo de 8 caracteres!");
                 
-            } else if (contraseñaCreada.equals(confirmarContraseñaCreada)) {
-                dineroUsuario = 0;
+            } else if (creacionContraseñaUsuario.getText().trim().equals(confirmarContraseñaCreada.trim())) {
+                DatosUsuario.setNombreUsuario(creacionNombreUsuario.getText());
+                DatosUsuario.setContraseñaUsuario(creacionContraseñaUsuario.getText());
                 
                 JOptionPane.showMessageDialog(null, "Cuenta creada con exito!");
              
@@ -106,13 +90,12 @@ public class Registrarse extends JFrame implements ActionListener {
                 
                 this.setVisible(false);
                 
-            } else if (contraseñaCreada != confirmarContraseñaCreada) {
+            } else if (!creacionContraseñaUsuario.getText().trim().equals(confirmarContraseñaCreada.trim())) {
                 JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden!");
-                
             } 
             
         } else if (e.getSource() == volver) {
-            SistemaBancario ventanaInicio = new SistemaBancario();
+            InterfazInicio ventanaInicio = new InterfazInicio();
             ventanaInicio.setBounds(0, 0, 350, 500);
             ventanaInicio.setResizable(false);
             ventanaInicio.setLocationRelativeTo(null);
@@ -122,8 +105,8 @@ public class Registrarse extends JFrame implements ActionListener {
         }
     }
     
-    public static void main (String[] args) {
-        Registrarse ventanaRegistrarse = new Registrarse();
+    protected static void interfazRegistroUsuario() {
+        RegistroUsuario ventanaRegistrarse = new RegistroUsuario();
         ventanaRegistrarse.setBounds(0, 0, 350, 500);
         ventanaRegistrarse.setResizable(false);
         ventanaRegistrarse.setLocationRelativeTo(null);

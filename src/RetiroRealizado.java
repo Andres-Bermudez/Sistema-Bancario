@@ -1,18 +1,12 @@
-
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
 public class RetiroRealizado extends JFrame implements ActionListener {
-    private JButton finalizar;
-    private JLabel transaccionExitosa, nombreDato, tipoTransaccion, valor, saldo, mensajeFinal;
+    private final JButton finalizar;
+    private final JLabel transaccionExitosa, nombreDato, tipoTransaccion, saldoDisponible, valor, mensajeFinal;
     
-    int dineroFactura = 0;
-    int dineroRetiro = 0;
-    
-    String nombre = "";
-    
-    public RetiroRealizado() {
+    protected RetiroRealizado() {
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("|| Transaccion Exitosa ||");
@@ -24,10 +18,7 @@ public class RetiroRealizado extends JFrame implements ActionListener {
         transaccionExitosa.setForeground(new Color(255, 255, 255));
         add(transaccionExitosa);
         
-        Datos objetoTres = new Datos();
-        nombre = objetoTres.nombreUsuario;
-        
-        nombreDato = new JLabel("Nombre: " + nombre);
+        nombreDato = new JLabel("Nombre: " + DatosUsuario.getNombreUsuario());
         nombreDato.setBounds(45, 110, 210, 30);
         nombreDato.setFont(new Font("Times New Roman", 1, 15));
         nombreDato.setForeground(new Color(255, 255, 255));
@@ -39,25 +30,17 @@ public class RetiroRealizado extends JFrame implements ActionListener {
         tipoTransaccion.setForeground(new Color(255, 255, 255));
         add(tipoTransaccion);
         
-        Retirar objetoDos = new Retirar();
-        dineroRetiro = objetoDos.dineroARetirar;
-        
-        valor = new JLabel("Valor Retiro: $" + dineroRetiro);
+        valor = new JLabel("Valor Retiro: $" + Retirar.dineroARetirar);
         valor.setBounds(45, 170, 210, 30);
         valor.setFont(new Font("Times New Roman", 1, 15));
         valor.setForeground(new Color(255, 255, 255));
         add(valor);
         
-        Datos objeto = new Datos();
-        dineroFactura = objeto.dineroUsuario;
-        
-        dineroFactura -= dineroRetiro;
-        
-        tipoTransaccion = new JLabel("Saldo disponible: $" + dineroFactura);
-        tipoTransaccion.setBounds(35, 200, 230, 30);
-        tipoTransaccion.setFont(new Font("Times New Roman", 1, 15));
-        tipoTransaccion.setForeground(new Color(255, 255, 255));
-        add(tipoTransaccion);
+        saldoDisponible = new JLabel("Saldo disponible: $" + DatosUsuario.getDineroUsuario());
+        saldoDisponible.setBounds(35, 200, 230, 30);
+        saldoDisponible.setFont(new Font("Times New Roman", 1, 15));
+        saldoDisponible.setForeground(new Color(255, 255, 255));
+        add(saldoDisponible);
         
         mensajeFinal = new JLabel("Gracias por usar nuestros servicios");
         mensajeFinal.setBounds(20, 250, 260, 30);
@@ -73,6 +56,7 @@ public class RetiroRealizado extends JFrame implements ActionListener {
         add(finalizar);
     }
     
+    @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == finalizar) {
             Operaciones ventanaOperaciones = new Operaciones();
@@ -85,7 +69,7 @@ public class RetiroRealizado extends JFrame implements ActionListener {
         }
     }
     
-    public static void main (String[] args) {
+    protected static void interfazRetiroRealizado() {
         RetiroRealizado ventanaRetiroRealizado = new RetiroRealizado();
         ventanaRetiroRealizado.setBounds(0, 0, 300, 400);
         ventanaRetiroRealizado.setResizable(false);

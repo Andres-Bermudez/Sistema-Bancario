@@ -1,16 +1,14 @@
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-// Interfaz de inicio
-public class SistemaBancario extends JFrame implements ActionListener {
-    // Declaracion de los componentes de la interfaz de inicio
-    private JLabel mensajeBienvenida, banco, mensajeInicio, mensajeInicioDos, mensajeInicioTres;
-    private JButton registrarse, salir;
+public class InterfazInicio extends JFrame implements ActionListener {
+    // Componentes de la interfaz de inicio
+    private final JLabel mensajeBienvenida, banco, mensajeInicio, mensajeInicioDos, mensajeInicioTres;
+    private final JButton registrarse, salir;
     
-    // Contructor con cada componente
-    public SistemaBancario() {
+    // Contructor
+    protected InterfazInicio() {
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("|| Banco de Colombia ||");
@@ -60,12 +58,13 @@ public class SistemaBancario extends JFrame implements ActionListener {
     }
     
     // Funciones de los Botones
+    @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == salir) {
             System.exit(0);
             
         } else if (e.getSource() == registrarse) {
-            Registrarse ventanaRegistrarse = new Registrarse();
+            RegistroUsuario ventanaRegistrarse = new RegistroUsuario();
             ventanaRegistrarse.setBounds(0, 0, 350, 500);
             ventanaRegistrarse.setResizable(false);
             ventanaRegistrarse.setLocationRelativeTo(null);
@@ -76,8 +75,8 @@ public class SistemaBancario extends JFrame implements ActionListener {
     }
     
     // Creacion de la interfaz de inicio
-    public static void main(String[] args) {
-        SistemaBancario ventanaInicio = new SistemaBancario();
+    protected static void inicio() {
+        InterfazInicio ventanaInicio = new InterfazInicio();
         ventanaInicio.setBounds(0, 0, 350, 500);
         ventanaInicio.setResizable(false);
         ventanaInicio.setLocationRelativeTo(null);

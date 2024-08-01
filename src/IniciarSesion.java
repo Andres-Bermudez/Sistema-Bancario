@@ -1,20 +1,13 @@
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 public class IniciarSesion extends JFrame implements ActionListener {
-    private JLabel titulo, tituloUsuario, tituloContraseña;
-    private JTextField nombreUsuario, contraseña;
-    private JButton ingresar;
-
-    String nombreIniciarSesion = "";
-    String contraseñaIniciarSesion = "";
+    private final JLabel titulo, tituloUsuario, tituloContraseña;
+    private final JTextField nombreUsuario, contraseñaUsuario;
+    private final JButton ingresar;
     
-    String consultaNombre = "";
-    String consultaContraseña = "";
-    
-    public IniciarSesion() {
+    protected IniciarSesion() {
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("|| Iniciar Sesion ||");
@@ -42,9 +35,9 @@ public class IniciarSesion extends JFrame implements ActionListener {
         tituloContraseña.setForeground(new Color(255, 255, 255));
         add(tituloContraseña);
         
-        contraseña = new JTextField();
-        contraseña.setBounds(75, 290, 200, 30);
-        add(contraseña);
+        contraseñaUsuario = new JTextField();
+        contraseñaUsuario.setBounds(75, 290, 200, 30);
+        add(contraseñaUsuario);
         
         ingresar = new JButton("Ingresar");
         ingresar.setBounds(125, 370, 100, 30);
@@ -54,18 +47,19 @@ public class IniciarSesion extends JFrame implements ActionListener {
         add(ingresar);
     }
     
+    @Override
     public void actionPerformed(ActionEvent e) {
+        String nombreIniciarSesion = nombreUsuario.getText();;
+        String contraseñaIniciarSesion = contraseñaUsuario.getText();
+        
         if (e.getSource() == ingresar) {
-            nombreIniciarSesion = nombreUsuario.getText();
-            contraseñaIniciarSesion = contraseña.getText();
             
-            Datos objeto = new Datos();
-            consultaNombre = objeto.nombreUsuario;
+            if (nombreIniciarSesion.isEmpty() || contraseñaIniciarSesion.isEmpty()) {
+               JOptionPane.showMessageDialog(null, "Recuerda llenar todos los campos!");
             
-            Datos objetoDos = new Datos();
-            consultaContraseña = objetoDos.contraseñaUsuario;
-            
-            if (nombreIniciarSesion.equals(consultaNombre) && contraseñaIniciarSesion.equals(consultaContraseña)) {
+            } else if (nombreIniciarSesion.trim().equals(DatosUsuario.getNombreUsuario()) && 
+                    contraseñaIniciarSesion.trim().equals(DatosUsuario.getContraseñaUsuario())) {
+                
                 Operaciones ventanaOperaciones = new Operaciones();
                 ventanaOperaciones.setBounds(0, 0, 350, 500);
                 ventanaOperaciones.setResizable(false);
@@ -74,17 +68,14 @@ public class IniciarSesion extends JFrame implements ActionListener {
                 
                 this.setVisible(false);
                 
-            } else if (nombreIniciarSesion.equals("") || contraseñaIniciarSesion.equals("")) {
-               JOptionPane.showMessageDialog(null, "Recuerda llenar todos los campos!");
-                
             } else {
-                JOptionPane.showMessageDialog(null, "Nombre de usuario o contraseña"
-                                           + "\n incorrectos verifica e intentalo nuevamente!");
+                JOptionPane.showMessageDialog(null, "        Nombre de usuario o contraseña"
+                                                + "\nincorrectos, verificalos e intentalo nuevamente!");
             }
         }
     }
     
-    public static void main(String[] args) {
+    protected static void interfazIniciarSesion() {
         IniciarSesion ventanaIniciarSesion = new IniciarSesion();
         ventanaIniciarSesion.setBounds(0, 0, 350, 500);
         ventanaIniciarSesion.setResizable(false);
