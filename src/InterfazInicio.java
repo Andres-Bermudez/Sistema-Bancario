@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class InterfazInicio extends JFrame implements ActionListener {
     // Componentes de la interfaz de inicio
-    private final JLabel mensajeBienvenida, banco, mensajeInicio, mensajeInicioDos, mensajeInicioTres;
+    private final JLabel mensajeBienvenida, banco, mensajeInicio, mensajeInicioDos;
     private final JButton registrarse, salir;
     
     // Contructor
@@ -12,37 +12,26 @@ public class InterfazInicio extends JFrame implements ActionListener {
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("|| Banco de Colombia ||");
-        getContentPane().setBackground(new Color(20, 90, 60));
         
         mensajeBienvenida = new JLabel("Bienvenido");
         mensajeBienvenida.setBounds(105, 60, 140, 30);
         mensajeBienvenida.setFont(new Font("Times New Roman", 1, 25));
-        mensajeBienvenida.setForeground(new Color(255, 255, 255));
         add(mensajeBienvenida);
         
-        banco = new JLabel("Banco de Colombia");
+        banco = new JLabel("Cajero Automatico");
         banco.setBounds(55, 90, 240, 30);
         banco.setFont(new Font("Times New Roman", 1, 25));
-        banco.setForeground(new Color(255, 255, 255));
         add(banco);
         
-        mensajeInicio = new JLabel("Gestiona tu dinero");
-        mensajeInicio.setBounds(85, 160, 180, 30);
+        mensajeInicio = new JLabel("Administra tu dinero");
+        mensajeInicio.setBounds(85, 180, 190, 30);
         mensajeInicio.setFont(new Font("Times New Roman", 1, 18));
-        mensajeInicio.setForeground(new Color(255, 180, 95));
         add(mensajeInicio);
         
-        mensajeInicioDos = new JLabel("Paga tus facturas");
-        mensajeInicioDos.setBounds(95, 190, 160, 30);
+        mensajeInicioDos = new JLabel("Gestiona tus pagos");
+        mensajeInicioDos.setBounds(95, 210, 180, 30);
         mensajeInicioDos.setFont(new Font("Times New Roman", 1, 18));
-        mensajeInicioDos.setForeground(new Color(155, 90, 245));
         add(mensajeInicioDos);
-        
-        mensajeInicioTres = new JLabel("Inversiones & Mucho mas");
-        mensajeInicioTres.setBounds(55, 220, 240, 30);
-        mensajeInicioTres.setFont(new Font("Times New Roman", 1, 18));
-        mensajeInicioTres.setForeground(new Color(25, 180, 25));
-        add(mensajeInicioTres);
         
         registrarse = new JButton("Registrarse");
         registrarse.setBounds(115, 280, 120, 40);
@@ -64,12 +53,7 @@ public class InterfazInicio extends JFrame implements ActionListener {
             System.exit(0);
             
         } else if (e.getSource() == registrarse) {
-            RegistroUsuario ventanaRegistrarse = new RegistroUsuario();
-            ventanaRegistrarse.setBounds(0, 0, 350, 500);
-            ventanaRegistrarse.setResizable(false);
-            ventanaRegistrarse.setLocationRelativeTo(null);
-            ventanaRegistrarse.setVisible(true);
-            
+            RegistroUsuario.interfazRegistroUsuario();
             this.setVisible(false);
         }
     }

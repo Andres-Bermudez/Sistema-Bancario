@@ -11,12 +11,10 @@ public class ConfirmarTransaccion extends JFrame implements ActionListener {
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("|| Confirmar Contraseña ||");
-        getContentPane().setBackground(new Color(80, 70, 20));
         
         confirmaContraseña = new JLabel("Confirma tu contraseña:");
         confirmaContraseña.setBounds(35, 70, 200, 30);
         confirmaContraseña.setFont(new Font("Times New Roman", 1, 14));
-        confirmaContraseña.setForeground(new Color(255, 255, 255));
         add(confirmaContraseña);
         
         confirmandoContraseña = new JTextField();
@@ -26,7 +24,6 @@ public class ConfirmarTransaccion extends JFrame implements ActionListener {
         completar = new JButton("Completar");
         completar.setBounds(70, 180, 110, 30);
         completar.setFont(new Font("Times New Roman", 1, 13));
-        completar.setForeground(new Color(0, 0, 0));
         completar.addActionListener(this);
         add(completar);
     }
@@ -44,13 +41,7 @@ public class ConfirmarTransaccion extends JFrame implements ActionListener {
             
             } else {
                 DatosUsuario.setDineroUsuario(DatosUsuario.getDineroUsuario() - Retirar.dineroARetirar);
-                
-                RetiroRealizado ventanaRetiroRealizado = new RetiroRealizado();
-                ventanaRetiroRealizado.setBounds(0, 0, 300, 400);
-                ventanaRetiroRealizado.setResizable(false);
-                ventanaRetiroRealizado.setLocationRelativeTo(null);
-                ventanaRetiroRealizado.setVisible(true);
-                
+                RetiroRealizado.interfazRetiroRealizado();
                 this.setVisible(false);
             }
         }

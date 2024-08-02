@@ -11,18 +11,15 @@ public class IniciarSesion extends JFrame implements ActionListener {
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("|| Iniciar Sesion ||");
-        getContentPane().setBackground(new Color(200, 90, 30));
         
         titulo = new JLabel("Iniciar Sesion");
         titulo.setBounds(75, 120, 160, 30);
         titulo.setFont(new Font("Times New Roman", 3, 23));
-        titulo.setForeground(new Color(255, 255, 255));
         add(titulo);
         
         tituloUsuario = new JLabel("Nombre de usuario:");
         tituloUsuario.setBounds(75, 180, 150, 30);
         tituloUsuario.setFont(new Font("Times New Roman", 1, 12));
-        tituloUsuario.setForeground(new Color(255, 255, 255));
         add(tituloUsuario);
         
         nombreUsuario = new JTextField();
@@ -32,7 +29,6 @@ public class IniciarSesion extends JFrame implements ActionListener {
         tituloContraseña = new JLabel("Ingresa tu contraseña:");
         tituloContraseña.setBounds(75, 260, 150, 30);
         tituloContraseña.setFont(new Font("Times New Roman", 1, 12));
-        tituloContraseña.setForeground(new Color(255, 255, 255));
         add(tituloContraseña);
         
         contraseñaUsuario = new JTextField();
@@ -42,14 +38,13 @@ public class IniciarSesion extends JFrame implements ActionListener {
         ingresar = new JButton("Ingresar");
         ingresar.setBounds(125, 370, 100, 30);
         ingresar.setFont(new Font("Times New Roman", 1, 15));
-        ingresar.setForeground(new Color(0, 0, 0));
         ingresar.addActionListener(this);
         add(ingresar);
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        String nombreIniciarSesion = nombreUsuario.getText();;
+        String nombreIniciarSesion = nombreUsuario.getText();
         String contraseñaIniciarSesion = contraseñaUsuario.getText();
         
         if (e.getSource() == ingresar) {
@@ -60,16 +55,11 @@ public class IniciarSesion extends JFrame implements ActionListener {
             } else if (nombreIniciarSesion.trim().equals(DatosUsuario.getNombreUsuario()) && 
                     contraseñaIniciarSesion.trim().equals(DatosUsuario.getContraseñaUsuario())) {
                 
-                Operaciones ventanaOperaciones = new Operaciones();
-                ventanaOperaciones.setBounds(0, 0, 350, 500);
-                ventanaOperaciones.setResizable(false);
-                ventanaOperaciones.setLocationRelativeTo(null);
-                ventanaOperaciones.setVisible(true);
-                
+                Operaciones.interfazOperaciones();
                 this.setVisible(false);
                 
             } else {
-                JOptionPane.showMessageDialog(null, "        Nombre de usuario o contraseña"
+                JOptionPane.showMessageDialog(null, "          Nombre de usuario o contraseña"
                                                 + "\nincorrectos, verificalos e intentalo nuevamente!");
             }
         }

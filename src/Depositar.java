@@ -12,12 +12,10 @@ public class Depositar extends JFrame implements ActionListener {
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("|| Depositar ||");
-        getContentPane().setBackground(new Color(50, 140, 90));
 
         dineroDeposito = new JLabel("Ingresa el dinero que vas a depositar:");
         dineroDeposito.setBounds(20, 60, 260, 30);
         dineroDeposito.setFont(new Font("Times New Roman", 2, 15));
-        dineroDeposito.setForeground(new Color(255, 255, 255));
         add(dineroDeposito);
 
         cantidad = new JTextField();
@@ -27,14 +25,12 @@ public class Depositar extends JFrame implements ActionListener {
         depositar = new JButton("Depositar");
         depositar.setBounds(100, 150, 100, 30);
         depositar.setFont(new Font("Times New Roman", 1, 13));
-        depositar.setForeground(new Color(0, 0, 0));
         depositar.addActionListener(this);
         add(depositar);
 
         cancelar = new JButton("Cancelar");
         cancelar.setBounds(105, 210, 90, 20);
         cancelar.setFont(new Font("Times New Roman", 1, 13));
-        cancelar.setForeground(new Color(0, 0, 0));
         cancelar.addActionListener(this);
         add(cancelar);
     }
@@ -54,15 +50,8 @@ public class Depositar extends JFrame implements ActionListener {
                     int saldoFinal = DatosUsuario.getDineroUsuario() + valorDineroIngresado;
                     
                     DatosUsuario.setDineroUsuario(saldoFinal);
-
                     JOptionPane.showMessageDialog(null, "¡Deposito finalizado con exito!");
-
-                    Operaciones ventanaOperaciones = new Operaciones();
-                    ventanaOperaciones.setBounds(0, 0, 350, 500);
-                    ventanaOperaciones.setResizable(false);
-                    ventanaOperaciones.setLocationRelativeTo(null);
-                    ventanaOperaciones.setVisible(true);
-
+                    Operaciones.interfazOperaciones();
                     this.setVisible(false);
 
                 } else if (valorDineroIngresado == 0) {
@@ -71,12 +60,7 @@ public class Depositar extends JFrame implements ActionListener {
             }
 
         } else if (e.getSource() == cancelar) {
-            Operaciones ventanaOperaciones = new Operaciones();
-            ventanaOperaciones.setBounds(0, 0, 350, 500);
-            ventanaOperaciones.setResizable(false);
-            ventanaOperaciones.setLocationRelativeTo(null);
-            ventanaOperaciones.setVisible(true);
-
+            Operaciones.interfazOperaciones();
             this.setVisible(false);
         }
     }
