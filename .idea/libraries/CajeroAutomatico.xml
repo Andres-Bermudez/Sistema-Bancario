@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="CajeroAutomatico">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/CajeroAutomatico.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

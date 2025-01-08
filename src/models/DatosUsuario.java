@@ -1,3 +1,5 @@
+package models;
+
 public class DatosUsuario {
     private static String nombreUsuario;
     private static String contraseñaUsuario;

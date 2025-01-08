@@ -1,12 +1,26 @@
-# Simulador Cajero Automatico
+# Simulador Sistema Bancario
 
-![Imagen de Muestra](imagenMuestra.png)
+![Imagen de Muestra](images/demo.png)
 
-- Simulador de cajero automatico desarrollado con Programación Orientada a Objetos. 
-Este simulador incluye funciones como registro de usuario, inicio de sesión, consulta
-de saldo, depósito y retiro de dinero, además de una simulación de autenticación de 
-datos antes de cada transacción. Al finalizar cada operación, se genera la factura correspondiente.
+## Descripción:
+Este proyecto es un simulador de cajero automático desarrollado
+en Java, aplicando Programación Orientada a Objetos y utilizando
+Java Swing para la creación de interfaces gráficas.
+
+El simulador incluye funciones como registro de usuario, inicio
+de sesión, consulta de saldo, depósito y retiro de dinero. Además,
+simula la autenticación de datos antes de cada transacción y, al
+finalizar cada operación, genera la factura correspondiente.
 <br>
+
+- Consulta de saldo:
+
+![saldo.png](images/saldo.png)
+
+- Factura generada:
+
+![factura.png](images/factura.png)
+<br><br>
     
 ## Objetivos del proyecto:
 1. Poner en practica los conocimientos adquiridos en los cursos que tome sobre

@@ -1,3 +1,5 @@
+package models;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -52,7 +54,7 @@ public class IniciarSesion extends JFrame implements ActionListener {
             if (nombreIniciarSesion.isEmpty() || contraseñaIniciarSesion.isEmpty()) {
                JOptionPane.showMessageDialog(null, "Recuerda llenar todos los campos!");
             
-            } else if (nombreIniciarSesion.trim().equals(DatosUsuario.getNombreUsuario()) && 
+            } else if (nombreIniciarSesion.trim().equals(DatosUsuario.getNombreUsuario()) &&
                     contraseñaIniciarSesion.trim().equals(DatosUsuario.getContraseñaUsuario())) {
                 
                 Operaciones.interfazOperaciones();

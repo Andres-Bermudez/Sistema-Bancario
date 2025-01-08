@@ -1,3 +1,5 @@
+package models;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -59,7 +61,7 @@ public class InterfazInicio extends JFrame implements ActionListener {
     }
     
     // Creacion de la interfaz de inicio
-    protected static void inicio() {
+    public static void inicio() {
         InterfazInicio ventanaInicio = new InterfazInicio();
         ventanaInicio.setBounds(0, 0, 350, 500);
         ventanaInicio.setResizable(false);
