@@ -3,46 +3,52 @@
 ![Imagen de Muestra](images/demo.png)
 
 ## Descripción:
-Este proyecto es un simulador de cajero automático desarrollado
-en Java, aplicando Programación Orientada a Objetos y utilizando
-Java Swing para la creación de interfaces gráficas.
+💳 Simulador de Cajero Automático
 
-El simulador incluye funciones como registro de usuario, inicio
-de sesión, consulta de saldo, depósito y retiro de dinero. Además,
-simula la autenticación de datos antes de cada transacción y, al
-finalizar cada operación, genera la factura correspondiente.
-<br>
+Este proyecto es un simulador de cajero automático desarrollado
+en Java, aplicando Programación Orientada a Objetos (OOP) y
+utilizando Java Swing para la creación de interfaces gráficas.
+
+🔑 Funciones principales:
+
+Registro de usuario e inicio de sesión.
+Consulta de saldo, depósito y retiro de dinero.
+Autenticación de datos antes de cada transacción.
+Generación de factura al finalizar cada operación.
+🎯 Objetivos del proyecto:
+
+Poner en práctica los conocimientos adquiridos en los cursos
+de programación orientada a objetos con Java, tales como:
+
+Abstracción y Encapsulamiento
+
+Herencia y Polimorfismo
+
+Clases y Objetos
+
+Clases abstractas e interfaces
+
+Principio de modularidad
+
+Uso de constructores, variables y métodos estáticos
+
+Sobrescritura de métodos y uso de getters/setters
+
+Comprensión del funcionamiento de la memoria en Java
+(Stack, Heap) y el Garbage Collector
+
+Manejo de errores y otras buenas prácticas de programación.
+
+🎯 Este proyecto me permitió reforzar mis conocimientos de Java
+y OOP, creando una aplicación funcional que simula un cajero
+automático realista y eficiente.
 
 - Consulta de saldo:
-
 ![saldo.png](images/saldo.png)
 
 - Factura generada:
-
 ![factura.png](images/factura.png)
-<br><br>
-    
-## Objetivos del proyecto:
-1. Poner en practica los conocimientos adquiridos en los cursos que tome sobre
-programación orientada a objetos con Java:
-    
-    - Abstracción.
-    - Herencia.
-    - Encapsulamiento.
-    - Polimorfismo.
-    - Clases y Objetos.
-    - Clases abstractas e interfaces.
-    - Principio de modularidad.
-    - Constructores.
-    - Variables y métodos estáticos.
-    - Sobre escritura de métodos.
-    - Getters y Setters.
-    - Palabras reservadas de Java.
-    - Funcionamiento de la memoria en Java(Stack, Heap).
-    - Garbage Collector.
-    - Manejo de errores.
-    - Entre otros...
-      <br>
+
 2. Mejorar mi lógica de programación.
 
 ## ¿Como usar el programa?
